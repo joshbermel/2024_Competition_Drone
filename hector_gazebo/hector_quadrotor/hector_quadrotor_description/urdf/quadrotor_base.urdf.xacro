@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find hector_sensors_description)/urdf/sonar_sensor.urdf.xacro" />
+  <xacro:property name="pi" value="3.1415926535897931" />
+  <xacro:property name="scale_factor" value="0.5" />
+
+  <!-- Main quadrotor link -->
+  <xacro:macro name="quadrotor_base_macro">
+    <link name="base_link">
+      <inertial>
+        <mass value="1.477" />
+        <origin xyz="0 0 0" />
+        <inertia ixx="0.01152" ixy="0.0" ixz="0.0" 
+                 iyy="0.01152" iyz="0.0" izz="0.0218" />
+      </inertial>
+
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://hector_quadrotor_description/meshes/quadrotor/quadrotor_base.dae">
+            <scale>${scale_factor} ${scale_factor} ${scale_factor}</scale>
+          </mesh>
+        </geometry>
+      </visual>
+
+      <collision>
+        <origin xyz="0 0 0.0" rpy="0 0 0" /> <!-- Adjusted origin to center the box -->
+        <geometry>
+          <box size="0.2 0.2 0.20" /> <!-- Width: 15 cm, Length: 20 cm, Height: 5 cm -->
+        </geometry>
+      </collision>
+
+<!-- 
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://hector_quadrotor_description/meshes/quadrotor/quadrotor_base.stl">
+            <scale>${scale_factor} ${scale_factor} ${scale_factor}</scale>
+          </mesh>
+        </geometry>
+      </collision> -->
+    </link>
+
+    <!-- Sonar height sensor -->
+    <xacro:sonar_sensor 
+        name="sonar" 
+        parent="base_link" 
+        ros_topic="sonar_height" 
+        update_rate="10" 
+        min_range="${0.03 * scale_factor}" 
+        max_range="${3.0 * scale_factor}" 
+        field_of_view="${40*pi/180}" 
+        ray_count="3">
+      <origin xyz="${-0.16 * scale_factor} 0.0 ${-0.012 * scale_factor}" rpy="0 ${90*pi/180} 0"/>
+    </xacro:sonar_sensor>
+
+  </xacro:macro>
+</robot>
