@@ -1,0 +1,15 @@
+20:59:06.706: Clue SIZE: HERD
+20:59:06.707: Clue VICTIM: ZEBRAS
+20:59:06.708: Clue CRIME: FAILED PRANK
+20:59:06.713: Clue TIME: APRIL 1
+20:59:06.713: Clue PLACE: QUANT REALM
+20:59:06.715: Clue MOTIVE: WANT TO PLAY
+20:59:06.715: Clue WEAPON: FEATHER
+20:59:06.716: Clue BANDIT: GIGGLING GAL
+20:59:41.562: Message received: TeamRed,multi21,0,START
+20:59:41.564: Timer started.
+20:59:48.732: Message received: TeamRed,multi21,1,HERD 
+20:59:48.734: Team total: 6 pts
+20:59:48.735: Awarded: 6 pts
+20:59:59.550: Message received: TeamRed,multi21,2,5YWYQ 
+20:59:59.555: Awarded: 0 pts

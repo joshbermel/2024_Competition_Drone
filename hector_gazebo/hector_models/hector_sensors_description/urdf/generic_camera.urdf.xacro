@@ -46,25 +46,22 @@
       <sensor type="camera" name="${name}_camera_sensor">
         <update_rate>30.0</update_rate>
           <camera name="head">
-          <horizontal_fov>1.3962634</horizontal_fov>
-          <image>
-            <width>800</width>
-            <height>800</height>
-            <format>R8G8B8</format>
-          </image>
-          <clip>
-            <near>0.02</near>
-            <far>300</far>
-          </clip>
-          <noise>
-            <type>gaussian</type>
-            <!-- Noise is sampled independently per pixel on each frame.
-                That pixel's noise value is added to each of its color
-                channels, which at that point lie in the range [0,1]. -->
-            <mean>0.0</mean>
-            <stddev>0.007</stddev>
-          </noise>
-        </camera>
+            <horizontal_fov>${hfov * M_PI / 180.0}</horizontal_fov>
+            <image>
+              <width>${res_x}</width>
+              <height>${res_y}</height>
+              <format>${image_format}</format>
+            </image>
+            <clip>
+              <near>0.02</near>
+              <far>300</far>
+            </clip>
+            <noise>
+              <type>gaussian</type>
+              <mean>0.0</mean>
+              <stddev>0.007</stddev>
+            </noise>
+          </camera>
         <!-- <camera>
           <horizontal_fov>${hfov * M_PI/180.0}</horizontal_fov>
           <image>
